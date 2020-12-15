@@ -7,7 +7,10 @@
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
                         <x-jet-application-mark class="block h-9 w-auto" />
-                    </a>
+                    </a> 
+                    <a href="{{ route('posts.index') }}">
+                        <x-jet-application-mark class="block h-9 w-auto" />
+                    </a>                    
                 </div>
 
                 <!-- Navigation Links -->
@@ -15,6 +18,11 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
+
+                    <x-jet-nav-link href="{{ route('posts.index') }}" :active="request()->routeIs('posts.index')">
+                        {{ __('Posts') }}
+                    </x-jet-nav-link>
+                    
                 </div>
             </div>
 
@@ -120,6 +128,7 @@
             <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-jet-responsive-nav-link>
+           
         </div>
 
         <!-- Responsive Settings Options -->

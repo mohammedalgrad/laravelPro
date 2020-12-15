@@ -16,6 +16,9 @@ class CheckGender
      */
     public function handle(Request $request, Closure $next)
     {
+        if (auth()->user()->gender == '') {            
+            return redirect('user/profile');
+        }
         return $next($request);
     }
 }
