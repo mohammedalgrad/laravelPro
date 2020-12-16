@@ -10,7 +10,13 @@
                     </a> 
                     <a href="{{ route('posts.index') }}">
                         <x-jet-application-mark class="block h-9 w-auto" />
-                    </a>                    
+                    </a>  
+                    <a href="{{ route('comments.index') }}">
+                        <x-jet-application-mark class="block h-9 w-auto" />
+                    </a> 
+                    <a href="{{ route('timeline') }}">
+                        <x-jet-application-mark class="block h-9 w-auto" />
+                    </a>                      
                 </div>
 
                 <!-- Navigation Links -->
@@ -21,6 +27,13 @@
 
                     <x-jet-nav-link href="{{ route('posts.index') }}" :active="request()->routeIs('posts.index')">
                         {{ __('Posts') }}
+                    </x-jet-nav-link>
+
+                    <x-jet-nav-link href="{{ route('comments.index') }}" :active="request()->routeIs('comments.index')">
+                        {{ __('Comments') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('timeline') }}" :active="request()->routeIs('timeline')">
+                        {{ __('Timeline') }}
                     </x-jet-nav-link>
                     
                 </div>

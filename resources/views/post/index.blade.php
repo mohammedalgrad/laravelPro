@@ -8,6 +8,7 @@
             </div>
             <div class="pull-right">
                 <a class="btn btn-success" href="{{ route('posts.create') }}"> Create New Post</a>
+                <a class="btn btn-success" href="{{ route('dashboard') }}">Dashboard</a>
             </div>
         </div>
     </div>
@@ -23,6 +24,7 @@
             <th>Id</th>
             <th>title</th>
             <th>body</th>
+            <th>gender permit</th>
             <th width="280px">Action</th>
         </tr>
         @foreach ($posts as $post)
@@ -30,6 +32,7 @@
             <td>{{ $post->id }}</td>
             <td>{{ $post->title }}</td>
             <td>{{ $post->body }}</td>
+            <td>{{ $post->gender }}</td>
             <td>
                 <form action="{{ route('posts.destroy',$post->id) }}" method="POST">
    

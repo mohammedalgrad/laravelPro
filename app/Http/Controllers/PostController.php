@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {
@@ -50,6 +51,25 @@ class PostController extends Controller
         return redirect()->route('posts.index')->with('success','Post created successfully.');
 
     }
+
+    public function ajaxCreatePost (Request $request){
+
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'body' => 'required',
+        ]);
+
+        if ($validator->passes()) {
+
+            Post::create($request->all());
+            
+            return response()->json(['success'=>'Added new records.']);
+            
+        }
+
+        return response()->json(['error'=>$validator->errors()]);
+    }
+    
 
     /**
      * Display the specified resource.
