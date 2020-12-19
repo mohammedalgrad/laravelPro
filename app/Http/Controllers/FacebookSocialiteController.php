@@ -1,16 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
-use Socialite;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Socialite;
+use App\Models\User;
+
 
 class FacebookSocialiteController extends Controller
 {
     public function redirectToFB()
     {
-        return Socialite::driver('facebook')->redirect();
+        return Socialite::driver('facebook')->stateless()->redirect();
     }
        
     /**
@@ -22,8 +23,9 @@ class FacebookSocialiteController extends Controller
     {
         try {
      
-            $user = Socialite::driver('facebook')->user();
-           
+            $user = Socialite::driver('facebook')->stateless()->user();
+
+            
            
       
             $finduser = User::where('social_id', $user->id)->first();
@@ -43,7 +45,7 @@ class FacebookSocialiteController extends Controller
                     'social_id'=> $user->id,
                     'national_id' => '',
                     'social_type'=> 'facebook',
-                    'password' => 'my-facebook'
+                    'password' => ''
                 ]);
      
                 Auth::login($newUser);
